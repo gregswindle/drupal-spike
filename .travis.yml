@@ -1,0 +1,15 @@
+language: php
+php:
+  - 7.2
+  - 7.1
+  - 5.6
+  - 5.4
+  - 5.3
+notifications:
+  email: false
+before_script:
+  - npm prune
+after_script: 'cat ./coverage/lcov.info | coveralls'
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

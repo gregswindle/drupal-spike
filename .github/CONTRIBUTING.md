@@ -1,14 +1,10 @@
-# Contributing to `eslint-plugin-swagger`
+# Contributing to `drupal-spike`
 
 Contributions are stories with a beginning, a middle, and an end, all told through issues and pull requests.
 
 ## 1. Create an issue to begin collaboration
 
-> :white_check_mark: Contributions start with clear communication, and issues – not e-mails! – are the best way to collaborate with colleagues.
->
-> Besides, whenever you save a comment or an edit to an issue, the right stakeholders will be notified.
-
-Think of issues communal to-do list. If you notice something wrong, toss an issue in and collaborate to determine when -- or whether -- it will be resolved.
+Contributions start with clear communication via issues.
 
 ### 1.1. Defect (aka "bug") issues
 
