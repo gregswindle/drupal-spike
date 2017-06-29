@@ -59,6 +59,7 @@
       "perf",
       "refactor",
       "revert",
+      "spike",
       "style",
       "test"
     ],
