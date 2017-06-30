@@ -26,36 +26,38 @@
 >
 > You need [Drush][drush-url], [Node.js with `npm`][nodejs-url] (or [Yarn][yarnpkg-url]), and [Composer][composer-url] installed, first.
 
-Open a Terminal (or shell) and `cd` to your Drupal site's root directory.
+Open a Terminal (or shell) and `cd` to your Drupal site's root directory and run
+
+```sh
+
+$ composer install
+
+```
+
+This executes custom [Composer scripts][composer-scripts-url] that install PHP and Node.js packages that automate:
+
+* Semantic versioning and CHANGELOG generation
+* Drupal coding standards compliance
+* Unit test execution and code coverage reports
 
 ### 2.1. Semantic version and CHANGELOG automation
 
-Install [`conventional commit message`][conventional-commit-url] validation pre-commit hook [`commitplease`][commitplease-url] and [`standard-version`][standard-version-url] to automate CHANGELOG generation and [semantic version][semver-url] updates.
+`drupal-spike` includes
 
-```sh
+* **[`commitplease`][commitplease-url]**, a [`conventional commit message`][conventional-commit-url] validation pre-commit hook
+* **[`standard-version`][standard-version-url]** to automate CHANGELOG generation and [semantic version][semver-url] updates.
 
-$ npm install
+### 2.2. Coding standards
 
-```
-### 2.2. PHP_CodeSniffer and Behat (with code coverage)
+`drupal-spike` lints (or "sniffs") PHP for code that doesn't smell like `Drupal` or `DrupalPractice` standards with [PHP_CodeSniffer][php-codesniffer-url].
 
-Install PHP development dependencies with Composer.
+### 2.3. Testing
 
-```sh
+`drupal-spike` uses:
 
-$ composer install && composer update drupal/coder --prefer-source
+* [Behat][behat-url], a Behavior-Driven Development (BDD) framework for writing (unit) tests
+*  [`leanphp/behat-code-coverage`][behat-code-coverage-url] to ensure custom PHP source code is covered by specs (née, unit tests).
 
-```
-
-### 2.3. `Drupal` and `DrupalPractice` code sniffers
-
-Add Drupal code standards to PHP_CodeSniffer:
-
-```sh
-
-$ vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer
-
-```
 
 ### 2.4. Drush command-line shell
 
@@ -135,9 +137,6 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 
 ---
 
-[composer-url]: https://getcomposer.org
-[yarnpkg-url]: https://yarnpkg.com
-[nodejs-url]: https://nodejs.org/
 [author-info]: https://github.com/gregswindle
 [behat-code-coverage-url]: https://github.com/leanphp/behat-code-coverage
 [behat-url]: https://github.com/Behat/Behat
@@ -147,6 +146,8 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [commitizen-add-commit-image]: ./.assets/img/commitizen-add-commit.png
 [commitizen-url]: https://github.com/commitizen/cz-cli
 [commitplease-url]: https://www.npmjs.com/package/commitplease
+[composer-scripts-url]: https://getcomposer.org/doc/articles/scripts.md
+[composer-url]: https://getcomposer.org
 [contributing-url]: ./.github/CONTRIBUTING.md
 [conventional-commit-url]: https://conventionalcommits.org/
 [coveralls-image]: https://coveralls.io/repos/gregswindle/drupal-spike/badge.svg
@@ -163,6 +164,7 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square
 [license-url]: ./LICENSE
 [license-url]: LICENSE
+[nodejs-url]: https://nodejs.org/
 [npm-image]: https://badge.fury.io/js/drupal-spike.svg
 [npm-url]: https://npmjs.org/package/drupal-spike
 [nsp-image]: https://nodesecurity.io/orgs/gregswindle/projects/d0b019ea-5391-4b3c-ba8c-464a24bf8a8c/badge
@@ -176,3 +178,4 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [standard-version-url]: https://github.com/conventional-changelog/standard-version
 [travis-image]: https://travis-ci.org/gregswindle/drupal-spike.svg?branch=master
 [travis-url]: https://travis-ci.org/gregswindle/drupal-spike
+[yarnpkg-url]: https://yarnpkg.com

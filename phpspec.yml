@@ -1,0 +1,5 @@
+# suites:
+#    vz_suite:
+#        namespace:  vz
+#        psr4_prefix:  vz
+#        src_path:  src/vz
