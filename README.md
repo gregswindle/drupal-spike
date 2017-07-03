@@ -7,8 +7,10 @@
 - [1. Table of contents](#1-table-of-contents)
 - [2. Installation](#2-installation)
 	- [2.1. Semantic version and CHANGELOG automation](#21-semantic-version-and-changelog-automation)
-	- [2.2. PHP_CodeSniffer and Behat (with code coverage)](#22-phpcodesniffer-and-behat-with-code-coverage)
-	- [2.3. `Drupal` and `DrupalPractice` code sniffers](#23-drupal-and-drupalpractice-code-sniffers)
+	- [2.2. Coding standards](#22-coding-standards)
+	- [2.3. Testing](#23-testing)
+		- [2.3.1. e2e testing](#231-e2e-testing)
+		- [2.3.2. Unit testing](#232-unit-testing)
 	- [2.4. Drush command-line shell](#24-drush-command-line-shell)
 - [3. Usage](#3-usage)
 	- [3.1. Git commit message validation](#31-git-commit-message-validation)
@@ -22,7 +24,7 @@
 <!-- /TOC -->
 
 ## 2. Installation
-> **:warning: Prerequisite software**
+> #### :warning: Prerequisite software
 >
 > You need [Drush][drush-url], [Node.js with `npm`][nodejs-url] (or [Yarn][yarnpkg-url]), and [Composer][composer-url] installed, first.
 
@@ -40,6 +42,10 @@ This executes custom [Composer scripts][composer-scripts-url] that install PHP a
 * Drupal coding standards compliance
 * Unit test execution and code coverage reports
 
+> #### :construction: [`geerlingguy/drupal-vm`][drupal-vm-url] for Apipee Developer Portal development
+>
+> We're exploring [`Drupal VM`][drupal-vm-url] as an alternative to installing resources on a workstation's host OS. Please see the [`Drupal VM docs`][drupa-vm-docs-url] if you're interested in spiking this alternative.
+
 ### 2.1. Semantic version and CHANGELOG automation
 
 `drupal-spike` includes
@@ -53,13 +59,29 @@ This executes custom [Composer scripts][composer-scripts-url] that install PHP a
 
 ### 2.3. Testing
 
-`drupal-spike` uses:
+`drupal-spike` includes frameworks for unit and end-to-end (e2e) testing.
 
-* [Behat][behat-url], a Behavior-Driven Development (BDD) framework for writing (unit) tests
-*  [`leanphp/behat-code-coverage`][behat-code-coverage-url] to ensure custom PHP source code is covered by specs (née, unit tests).
+#### 2.3.1. e2e testing
+
+For functional and integration tests, `drupal-spike` uses [Behat][behat-url], a Behavior-Driven Development (BDD) framework for writing (unit) tests.
+
+
+#### 2.3.2. Unit testing
+> #### :construction: Unit testing frameworks are currently under evaluation
+>
+> We're leaning toward Behavior-Driven Development (BDD) frameworks for writing specs (née, unit tests). We recognize, that [`PHPUnit`][phpunit-url] is the _de-facto_ standard for PHP Test-Driven Development (TDD). Therefore, our final recommendation will to be either incorporate
+> * Either [`PHPUnit`][phpunit-url] or [`phpspec`][phpspec-url] , or
+> * The option to use either one, as long as the framework produces clover.xml and [`lcov`][lcov-url] code coverage reports.
+
+For unit testing, `drupal-spike` uses
+
+* [`phpspec`][phpspec-url] A BDD framework that generates PHP classes from specs.
+* [`leanphp/behat-code-coverage`][behat-code-coverage-url] to ensure custom PHP source code is covered by specs (née, unit tests).
+* [`sebastianbergmann/phpcov`][phpcov-url] to merge coverage data from PHPSpec and other tools (e.g.,) PHPUnit.
 
 
 ### 2.4. Drush command-line shell
+> #### :slot_machine: This step is OPTIONAL.
 
 [Install Drush 7 and 8 Side-by-Side and Automatically Switch Versions Based on Each Project](https://github.com/leanphp/behat-code-coverage#Configuration https://modulesunraveled.com/blog/install-drush-7-and-8-and-automatically-switch-versions-based-project).
 
@@ -135,7 +157,6 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 
 [Apache-2.0][license-url] :copyright: [Greg Swindle][author-info].
 
----
 
 [author-info]: https://github.com/gregswindle
 [behat-code-coverage-url]: https://github.com/leanphp/behat-code-coverage
@@ -154,6 +175,8 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [coveralls-url]: https://coveralls.io/r/gregswindle/drupal-spike
 [daviddm-image]: https://david-dm.org/gregswindle/drupal-spike.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/gregswindle/drupal-spike
+[drupa-vm-docs-url]: http://docs.drupalvm.com/en/latest/
+[drupal-vm-url]: https://github.com/geerlingguy/drupal-vm
 [drush-url]: https://github.com/drush-ops/drush
 [git-commit-guidelines-url]: https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit
 [git-feat-branch-url]: https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow
@@ -161,6 +184,7 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [greenkeeper-image]: https://badges.greenkeeper.io/gregswindle/drupal-spike.svg
 [greenkeeper-url]: https://greenkeeper.io/
 [issues-url]: https://github.com/gregswindle/drupal-spike/issues
+[lcov-url]: https://github.com/linux-test-project/lcov
 [license-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square
 [license-url]: ./LICENSE
 [license-url]: LICENSE
@@ -170,6 +194,9 @@ Contributions are stories with a beginning, a middle, and an end, all told throu
 [nsp-image]: https://nodesecurity.io/orgs/gregswindle/projects/d0b019ea-5391-4b3c-ba8c-464a24bf8a8c/badge
 [nsp-url]: https://nodesecurity.io/orgs/gregswindle/projects/d0b019ea-5391-4b3c-ba8c-464a24bf8a8c
 [php-codesniffer-url]: https://github.com/squizlabs/PHP_CodeSniffer
+[phpcov-url]: https://github.com/sebastianbergmann/phpcov
+[phpspec-url]: http://www.phpspec.net/en/stable/
+[phpunit-url]: https://phpunit.de/
 [pr-url]: https://github.com/gregswindle/drupal-spike/pulls
 [readme-image]: http://readme-score-api.herokuapp.com/score.svg?url=https%3A%2F%2Fgithub.com%2Fgregswindle%2Fdrupal-spike
 [readme-url]: http://clayallsopp.github.io/readme-score?url=https%3A%2F%2Fgithub.com%2Fgregswindle%2Fdrupal-spike
