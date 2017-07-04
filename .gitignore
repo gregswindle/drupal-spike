@@ -71,6 +71,9 @@ coverage
 # nyc test coverage
 .nyc_output
 
+# Directory for behat junit coverage
+behat-coverage
+
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
