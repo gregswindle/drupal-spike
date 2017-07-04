@@ -3,12 +3,9 @@
   "description": "A Drupal 7 spike solution to test CI-services.",
   "type": "project",
   "require-dev": {
-    "squizlabs/php_codesniffer": "^2.9",
-    "behat/behat": "^3.3",
-    "behat/mink": "^1.7",
-    "leanphp/behat-code-coverage": "^3.0",
     "drupal/coder": "^8.2",
-    "phpspec/phpspec": "^3.0"
+    "drupal/drupal-extension": "^3.3",
+    "se/selenium-server-standalone": "^3.4"
   },
   "config": {
     "bin-dir": "bin"
@@ -28,9 +25,9 @@
     "npm-install": "npm install",
     "npm-test": "npm test",
     "npm-update": "npm update",
-    "php-sniff": "vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./src ./sites",
-    "php-test": "vendor/bin/behat",
-    "sniffers-config-set": "vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer && vendor/bin/phpcs --config-set default_standard Drupal",
+    "php-sniff": "bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./sites",
+    "php-test": "bin/behat",
+    "sniffers-config-set": "bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer && bin/phpcs --config-set default_standard Drupal",
     "test": [
       "@php-sniff",
       "@php-test",

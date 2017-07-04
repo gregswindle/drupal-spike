@@ -1,12 +1,26 @@
 default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
   extensions:
-    LeanPHP\Behat\CodeCoverage\Extension:
-      auth:       ~
-      drivers:
-        - local
-      filter:     ~
-      report:
-        # report format (html, clover, php, text)
-        format:   clover
-        options:
-          target: build/behat-coverage
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://seven.l
+    Drupal\DrupalExtension:
+      blackbox: ~
+    # LeanPHP\Behat\CodeCoverage\Extension:
+    #   auth:       ~
+    #   drivers:
+    #     - local
+    #   filter:     ~
+    #   report:
+    #     # report format (html, clover, php, text)
+    #     format:   clover
+    #     options:
+    #       target: build/behat-coverage

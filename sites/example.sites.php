@@ -4,7 +4,7 @@
  * @file
  * Configuration file for Drupal's multi-site directory aliasing feature.
  *
- * This file allows you to define a set of aliases that map hostnames, ports, and
+ * This file lets you to define a set of aliases that map hostnames, ports, and
  * pathnames to configuration directories in the sites directory. These aliases
  * are loaded prior to scanning for directories, and they are exempt from the
  * normal discovery rules. See default.settings.php to view how Drupal discovers
@@ -35,6 +35,7 @@
  * for more information on setting up domains, subdomains, and subdirectories.
  *
  * The following examples look for a site configuration in sites/example.com:
+ * @codingStandardsIgnoreStart
  * @code
  * URL: http://dev.drupal.org
  * $sites['dev.drupal.org'] = 'example.com';
@@ -48,6 +49,7 @@
  * URL: http://www.drupal.org:8080/mysite/test/
  * $sites['8080.www.drupal.org.mysite.test'] = 'example.com';
  * @endcode
+ * @codingStandardsIgnoreEnd
  *
  * @see default.settings.php
  * @see conf_path()
