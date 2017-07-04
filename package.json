@@ -1,6 +1,6 @@
 {
   "name": "drupal-spike",
-  "version": "1.0.0",
+  "version": "1.0.0-development",
   "description": "A Drupal 7 spike solution to test CI-services.",
   "homepage": "https://github.com/gregswindle/drupal-spike/",
   "author": {

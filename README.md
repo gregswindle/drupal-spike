@@ -1,6 +1,8 @@
 # `drupal-spike`
 > :microscope: Automate Drupal testing, coverage, Git commit message validation, CHANGELOG generation, semantic version updates, and source code inspection with CLI tools for continuous integration.
 
+[![Build Status](https://travis-ci.org/gregswindle/drupal-spike.svg)](https://travis-ci.org/gregswindle/drupal-spike)
+
 ## 1. Table of contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
