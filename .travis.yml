@@ -1,6 +1,6 @@
 dist: trusty
 addons:
-  sonarqube:
+  sonarcloud:
     organization: "$SONAR_ORGANIZATION"
     token:
       secure: "$SONAR_TOKEN"
