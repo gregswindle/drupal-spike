@@ -1,6 +1,6 @@
 {
   "name": "drupal-spike",
-  "version": "1.0.0",
+  "version": "1.0.0-development",
   "description": "A Drupal 7 spike solution to test CI-services.",
   "homepage": "https://github.com/gregswindle/drupal-spike/",
   "author": {
@@ -23,13 +23,16 @@
     "jest-cli": "^20.0.4",
     "nsp": "^2.6.3",
     "semantic-release": "^6.3.6",
-    "standard-version": "^4.2.0"
+    "sonar-scanner": "^1.0.1",
+    "standard-version": "^4.2.0",
+    "watch-cli": "^0.2.1"
   },
   "scripts": {
     "prepublish": "nsp check",
     "pretest": "eslint . --fix",
     "test": "jest --config=jest.config.json",
-    "release": "standard-version"
+    "release": "standard-version",
+    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner -Dproject.settings=sonar-project.properties -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_TOKEN -X"
   },
   "eslintConfig": {
     "extends": "xo-space",

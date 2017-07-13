@@ -1,15 +1,40 @@
-language: php
+dist:               trusty
+addons:
+  sonarcloud:
+    organization:   "$SONAR_ORGANIZATION"
+    token:
+      secure:       "$SONAR_TOKEN"
+    github_token:
+      secure:       "$GITHUB_ACCESS_TOKEN"
+    branches:
+      - master
+      - /[build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test].*/
+jdk:
+  - oraclejdk8
+language:           node_js
+cache:
+  directories:
+    - '$HOME/.sonar/cache'
+language:           php
 php:
-  - 7.2
-  - 7.1
   - 5.6
-  - 5.4
-  - 5.3
+env:
+  - TRAVIS_NODE_VERSION="8"
+  - TRAVIS_NODE_VERSION="7"
+  - TRAVIS_NODE_VERSION="6"
+  - TRAVIS_NODE_VERSION="node"
 notifications:
-  email: false
+  email:            false
+install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - npm install
 before_script:
   - npm prune
-after_script: 'cat ./coverage/lcov.info | coveralls'
+script:
+  - composer install
+  - composer run test
+  - sonar-scanner -Dproject.settings=./sonar-project.properties -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_TOKEN -X
+# after_script:     'cat ./coverage/lcov.info | coveralls'
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
