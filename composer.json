@@ -34,7 +34,7 @@
     "php-sniff": "bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./sites",
     "php-test": "bin/behat -f pretty -o std --format=junit --out reports/e2e",
     "sniffers-config-set": "bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer && bin/phpcs --config-set default_standard Drupal",
-    "sonar-scanner": "npm run sonar-scanner",
+    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner -Dproject.settings=sonar-project.properties -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_TOKEN -X",
     "test": [
       "@php-fix",
       "@php-sniff",
