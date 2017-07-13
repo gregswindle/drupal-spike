@@ -29,17 +29,19 @@
     "npm-install": "npm install",
     "npm-test": "npm test",
     "npm-update": "npm update",
-    "php-testability": "bin/testability . -x vendor,tmp,upload,config -o reports",
+    "php-testability": "bin/testability . -x vendor,tmp,upload,config -o reports/php-testability",
     "php-fix": "bin/phpcbf ./sites",
     "php-sniff": "bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./sites",
-    "php-test": "bin/behat -f pretty -o std --format=junit --out reports",
+    "php-test": "bin/behat -f pretty -o std --format=junit --out reports/e2e",
     "sniffers-config-set": "bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer && bin/phpcs --config-set default_standard Drupal",
+    "sonar-scanner": "npm run sonar-scanner",
     "test": [
       "@php-fix",
       "@php-sniff",
       "@php-test",
       "@php-testability",
-      "@npm-test"
+      "@npm-test",
+      "@sonar-scanner"
     ],
     "test:watch": "node_modules/.bin/watch -p \"**/*.php\" -c composer run test",
     "post-install-cmd": [
