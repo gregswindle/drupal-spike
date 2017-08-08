@@ -23,7 +23,7 @@
     "jest-cli": "^20.0.4",
     "nsp": "^2.6.3",
     "semantic-release": "^6.3.6",
-    "sonar-scanner": "^1.0.1",
+    "sonar-scanner": "^3.0.3",
     "standard-version": "^4.2.0",
     "watch-cli": "^0.2.1"
   },
